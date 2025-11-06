@@ -5,7 +5,6 @@ import dj_database_url
 from pathlib import Path
 
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -132,13 +131,13 @@ WSGI_APPLICATION = 'Backend.wsgi.application'
 #         'PORT': '5432',
 #     }
 # }
-import dj_database_url
+
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://myuserr:aromal@localhost:5432/mydatabase',
+    'default': dj_database_url.parse(
+        os.environ.get('DATABASE_URL', 'postgresql://ecom_db_mbb1_user:vHVe1UAXRqGt00WIhNXCAIrowvIniqw2@dpg-d46c5n4hg0os73ferpsg-a/ecom_db_mbb1'),
         conn_max_age=600,
-        ssl_require=False
+        ssl_require=True
     )
 }
 
